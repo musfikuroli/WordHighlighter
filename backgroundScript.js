@@ -1,5 +1,5 @@
 // Predefined list of words to highlight
-const predefinedWords = ["hello", "world", "code"];
+// const predefinedWords = ["hello", "world", "code"];
 
 // Function to send message to content script
 function sendMessageToContentScript(tabId, message) {
