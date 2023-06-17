@@ -4,7 +4,9 @@
   "version": "1.0",
   "description": "Highlights predefined words on the current tab page.",
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "http://*/",
+    "https://*/"
   ],
   "background": {
     "scripts": ["backgroundScript.js"],
@@ -25,5 +27,8 @@
     "16": "icon.png",
     "48": "icon.png",
     "128": "icon.png"
-  }
+  },
+  "web_accessible_resources": [
+    "wordlist.txt"
+  ]
 }

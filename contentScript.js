@@ -1,10 +1,21 @@
-// Predefined list of words to highlight
-const predefinedWords = ["hello", "world", "code"];
+// Function to fetch and parse the wordlist file
+async function fetchWordList() {
+  try {
+    const response = await fetch(chrome.runtime.getURL('wordlist.txt'));
+    const text = await response.text();
+    return text.split('\n').map(word => word.trim()).filter(word => word !== '');
+  } catch (error) {
+    console.error('Failed to fetch or parse the wordlist file:', error);
+    return [];
+  }
+}
 
 // Function to highlight words
-function highlightWords() {
+async function highlightWords() {
+  const predefinedWords = await fetchWordList();
+
   const elements = document.querySelectorAll("body *");
-  elements.forEach(element => {
+  elements.forEach((element) => {
     const node = element.firstChild;
     if (node !== null && node.nodeType === Node.TEXT_NODE) {
       const text = node.nodeValue;
